@@ -35,7 +35,6 @@
         <button onclick="openOrderPopup()">Place Order</button>
     </div>
 
-    <!-- Order Popup -->
     <div id="orderPopup" class="popup-box">
         <div class="popup-content">
             <h2>Confirm Order</h2>
@@ -54,9 +53,7 @@
             <button onclick="closePopup()">Cancel</button>
         </div>
     </div>
-	
-	
-	
+
 	<div class="faq-box">
     <h2>Daily Volume</h2>
     <table id="volumeTable">
@@ -68,14 +65,11 @@
             </tr>
         </thead>
         <tbody>
-            <!-- JS will populate this -->
+            <!-- Here JS -->
         </tbody>
     </table>
 </div>
 
-
-
-    <!-- FAQ Box -->
     <div class="faq-box">
         <h2>Frequently Asked Questions (FAQ)</h2>
         

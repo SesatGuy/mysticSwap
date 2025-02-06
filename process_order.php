@@ -18,7 +18,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $order["id"] = uniqid("order_");
     $order["status"] = "pending";
-    $order["created_at"] = date("Y-m-d H:i:s");
+    $order["created_at"] = gmdate("Y-m-d H:i:s");  // Generates timestamp in UTC
+
 
     $orders[] = $order;
     file_put_contents($ordersFile, json_encode($orders, JSON_PRETTY_PRINT));

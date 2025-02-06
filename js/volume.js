@@ -2,12 +2,18 @@ document.addEventListener("DOMContentLoaded", function () {
     fetchAndUpdateTable();
 });
 
-// Fetch and update the table when the page loads
+
 function fetchAndUpdateTable() {
-    fetch("json/orders.json")
-        .then(response => response.json())
+    fetch(`json/orders.json?t=${new Date().getTime()}`) 
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        })
         .then(data => {
-            calculateTodayVolume(data);  // Process the orders and calculate daily volume
+            console.log("Fetched Data:", data);
+            calculateTodayVolume(data);
         })
         .catch(error => {
             console.error("Error loading orders:", error);
@@ -21,37 +27,39 @@ function calculateTodayVolume(orders) {
         LKE: 0.000011 / 3
     };
 
-    // Get the current time and the start of today (midnight 00:00:00)
-    const currentTime = new Date();  // Get the current date and time
-    const startOfDay = new Date(currentTime);  // Make a copy of current date
-    startOfDay.setHours(0, 0, 0, 0);  // Set to midnight today
 
-    console.log('Current Time:', currentTime);  // Debug: Check current time
-    console.log('Start of Today:', startOfDay);  // Debug: Check start of today
+    const currentTime = new Date();
+    const startOfDay = new Date();
+    startOfDay.setHours(0, 0, 0, 0);  
 
-    // Initialize the daily volume for each coin
+    console.log('Current Time:', currentTime.toLocaleString());  
+    console.log('Start of Today (Local):', startOfDay.toLocaleString());  
+
     let dailyVolume = {
         DUCO: { total: 0, usd: 0 },
         RDD: { total: 0, usd: 0 },
         LKE: { total: 0, usd: 0 }
     };
 
-    // Loop through the orders and calculate volume for completed orders today
+
     orders.forEach(order => {
-        // Only process completed orders
-        if (order.status !== "completed") return;
+        if (order.status !== "completed") return;  
 
-        // Parse the order creation time
-        const orderTime = new Date(order.created_at);
-        console.log('Order Created At:', order.created_at);  // Debug: Check the order's creation time
-        console.log('Parsed Order Time:', orderTime);  // Debug: Check the parsed order time
+        const orderTime = new Date(order.created_at + " UTC");  
 
-        // Check if the order was created today (from midnight today to now)
+        console.log(`Order Created At (Raw): ${order.created_at}, Parsed (UTC): ${orderTime.toLocaleString()}`);  // Debug
+
+        if (isNaN(orderTime.getTime())) {
+            console.warn("Skipping order with invalid date:", order);
+            return;
+        }
+
         if (orderTime >= startOfDay && orderTime <= currentTime) {
-            let toCoin = order.to;  // Coin received (e.g., RDD)
-            let amount = parseFloat(order.receive); // The amount received
+            let toCoin = order.to.toUpperCase();
+            let amount = parseFloat(order.receive);
 
-            // Only process if the amount is a valid number and the coin exists in the volumeData
+            console.log(`Parsed Amount for ${toCoin}: ${amount}`);
+
             if (!isNaN(amount) && coinPrices[toCoin]) {
                 dailyVolume[toCoin].total += amount;
                 dailyVolume[toCoin].usd += amount * coinPrices[toCoin];
@@ -59,25 +67,22 @@ function calculateTodayVolume(orders) {
         }
     });
 
-    console.log('Daily Volume:', dailyVolume);  // Debug: Check the daily volume object
+    console.log('Daily Volume:', dailyVolume);  
 
-    populateTable(dailyVolume);  // Populate the table after calculating the daily volume
+    populateTable(dailyVolume);
 }
 
-// Function to populate the table with the daily volume data for today
+
 function populateTable(dailyVolume) {
     let tbody = document.querySelector("#volumeTable tbody");
-    tbody.innerHTML = "";  // Clear existing rows before adding new data
+    tbody.innerHTML = ""
 
-    // Ensure all coins are shown, even if their volume is zero
     const allCoins = ['DUCO', 'RDD', 'LKE'];
 
     allCoins.forEach(coin => {
-        let row = `<tr>
-            <td>${coin}</td>
-            <td>${dailyVolume[coin].total.toFixed(2)}</td>
-            <td>$${dailyVolume[coin].usd.toFixed(4)}</td>
-        </tr>`;
-        tbody.innerHTML += row;
+        let row = tbody.insertRow();
+        row.insertCell(0).textContent = coin;
+        row.insertCell(1).textContent = dailyVolume[coin].total.toFixed(2);
+        row.insertCell(2).textContent = `$${dailyVolume[coin].usd.toFixed(4)}`;
     });
 }
