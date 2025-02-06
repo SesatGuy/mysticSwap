@@ -10,7 +10,7 @@ It's because ___________. This thing suck anyway.
 * Price in USD
 * Can toggle if the coins is for Buy/Sell of Buy only
 * Foolproof
-* Very unsecure admin page
+* Basic Secure Admin Page
 
 # Exchange
 * Reddcoin (RDD)
@@ -46,4 +46,4 @@ const reddcoinPriceInUSD = 0.00008029; // Price of 1 RDD in USD
 
 # Notice
 
-This thing is very basic and unsecure, anyone can access admin page and mess up the orders stuff
+This thing is very basic with basic security. Admin data were store in json and encrypt with bcrypt, which is used to login to the page.
