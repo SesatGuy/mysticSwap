@@ -5,12 +5,13 @@
 It's because ___________. This thing suck anyway.
 
 # Features
-* Store orders in Json
-* Everything is simple
+This exchange is very lightweight
+
 * Price in USD
-* Can toggle if the coins is for Buy/Sell of Buy only
-* Foolproof
-* Basic Secure Admin Page
+* Basic security and foolproof
+* Work on every cryptocurrencies
+* Stored in Json
+* Can toggle between Buy/Sell and Buy only for each coins
 
 # Exchange
 * Reddcoin (RDD)
