@@ -10,7 +10,7 @@
 
     <h1>MsyticSwap</h1>
     <div class="exchange-box">
-        <h2>Demo Exchange</h2>
+        <h2></h2>
 
         <label for="from_coin">From:</label>
         <select id="from_coin" onchange="validateCoinSelection()">
