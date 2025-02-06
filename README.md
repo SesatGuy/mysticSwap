@@ -50,7 +50,7 @@ const reddcoinPriceInUSD = 0.00008029; // Price of 1 RDD in USD
 
 # Notice
 
-This thing is very basic with basic security. Admin data were store in json and encrypt with bcrypt, which is used to login to the page.
+This thing is very basic with basic security. Admin data were store in json and encrypt with bcrypt, which is used to login to the page. This suck
 
 #### Want to use it?
 I don't mind since this is very basic thing that people should able to recreate this.
