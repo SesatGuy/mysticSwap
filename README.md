@@ -10,6 +10,7 @@ It's because ___________. This thing suck anyway.
 This exchange is very lightweight
 
 * Price in USD
+* Daily Volumes
 * Basic security and foolproof
 * Work on every cryptocurrencies
 * Stored in Json
