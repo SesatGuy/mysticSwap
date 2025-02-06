@@ -22,8 +22,8 @@
         <label for="to_coin">To:</label>
         <select id="to_coin" onchange="validateCoinSelection()">
             <option value="RDD">ReddCoin (RDD)</option>
-            <option value="LKE">LikeCoin (LKE)</option>
-            <option value="DUCO">DuinoCoin (DUCO)</option>
+            <option value="LKE">LikeCoin (LKE) (Buy Only)</option>
+            <option value="DUCO">DuinoCoin (DUCO) (Buy Only)</option>
         </select>
 
         <label for="amount">Amount:</label>
