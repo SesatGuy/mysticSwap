@@ -1,6 +1,8 @@
 # MysticSwap
 #### Manual crypto exchange
 
+A simple and lightweight crypto exchange where you have to manually process the orders. Supporting every cryptocurrencies since it's manual.
+
 # Why this exist?
 It's because ___________. This thing suck anyway.
 
