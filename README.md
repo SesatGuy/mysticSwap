@@ -24,7 +24,7 @@ This exchange is very lightweight
 (It's manual so just add anything)
 
 ## How the price work?
-Yes
+Yes, manual price update
 ```
 // Prices in USD
 const duinoPriceInUSD = 0.000011; // Price of 1 DUCO in USD
