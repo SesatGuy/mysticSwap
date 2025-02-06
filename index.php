@@ -22,8 +22,8 @@
         <label for="to_coin">To:</label>
         <select id="to_coin" onchange="validateCoinSelection()">
             <option value="RDD">ReddCoin (RDD)</option>
-            <option value="LKE">LikeCoin (LKE) (Buy Only)</option>
-            <option value="DUCO">DuinoCoin (DUCO) (Buy Only)</option>
+            <option value="LKE">LikeCoin (LKE) (No Liquidity)</option>
+            <option value="DUCO">DuinoCoin (DUCO) (No Liquidity)</option>
         </select>
 
         <label for="amount">Amount:</label>
@@ -54,6 +54,26 @@
             <button onclick="closePopup()">Cancel</button>
         </div>
     </div>
+	
+	
+	
+	<div class="faq-box">
+    <h2>Daily Volume</h2>
+    <table id="volumeTable">
+        <thead>
+            <tr>
+                <th>Coin</th>
+                <th>Total Volume</th>
+                <th>Volume (USD)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- JS will populate this -->
+        </tbody>
+    </table>
+</div>
+
+
 
     <!-- FAQ Box -->
     <div class="faq-box">
@@ -91,5 +111,7 @@
     </div>
 
     <script src="js/script.js"></script>
+	<script src="js/volume.js"></script>
+
 </body>
 </html>

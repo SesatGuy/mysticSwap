@@ -1,6 +1,6 @@
 // Prices in USD
 const duinoPriceInUSD = 0.000011; // Price of 1 DUCO in USD
-const reddcoinPriceInUSD = 0.00008029; // Price of 1 RDD in USD
+const reddcoinPriceInUSD = 0.000074; // Price of 1 RDD in USD
 
 // Liquidity (True = can buy and sell, False = buy only)
 const liquidity = {
@@ -16,11 +16,11 @@ const exchangeRates = {
         RDD: duinoPriceInUSD / reddcoinPriceInUSD * 0.8,  // 1 DUC = 0.1379 RDD
     },
     LKE: {
-        DUC0: 0.8 / 3,  // 1 LIKE = 1/3 DUC
-        RDD: (0.6 / 3) * (duinoPriceInUSD / reddcoinPriceInUSD),  // 1 LIKE = (1/3) * 0.1379 RDD
+        DUCO: 0.8 / 3,  // 1 LIKE = 0.8/3 DUC
+        RDD: (0.6 / 3) * (duinoPriceInUSD / reddcoinPriceInUSD),  // 1 LIKE = (0.6/3) * 0.1379 RDD
     },
     RDD: {
-        DUC0: reddcoinPriceInUSD / duinoPriceInUSD,  // 1 RDD = 7.3 DUC
+        DUCO: reddcoinPriceInUSD / duinoPriceInUSD,  // 1 RDD = 7.3 DUC
         LKE: (reddcoinPriceInUSD / duinoPriceInUSD) * 3,  // 1 RDD = 7.3 * 3 LIKE
     },
 };
