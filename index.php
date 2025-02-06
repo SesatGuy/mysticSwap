@@ -8,7 +8,7 @@
 </head>
 <body>
 
-    <h1>MsyticSwap</h1>
+    <h1>MsyticSwap (DEMO)</h1>
     <div class="exchange-box">
         <h2></h2>
 

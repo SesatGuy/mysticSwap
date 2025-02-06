@@ -40,7 +40,6 @@ if (!isset($_SESSION['admin_logged_in'])) {
     }
 
     ?>
-
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -75,6 +74,20 @@ if (!file_exists($ordersFile)) {
     file_put_contents($ordersFile, json_encode([]));
 }
 $orders = json_decode(file_get_contents($ordersFile), true);
+
+// Pagination setup
+$ordersPerPage = 20; // Number of orders per page
+$totalOrders = count($orders); // Total number of orders
+$totalPages = ceil($totalOrders / $ordersPerPage); // Total number of pages
+
+// Get the current page from the query string, default to 1 if not set
+$currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+if ($currentPage < 1) $currentPage = 1; // Ensure the page number is valid
+if ($currentPage > $totalPages) $currentPage = $totalPages; // Avoid exceeding total pages
+
+// Calculate the offset for fetching orders
+$offset = ($currentPage - 1) * $ordersPerPage;
+$paginatedOrders = array_slice($orders, $offset, $ordersPerPage); // Slice the orders array
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['order_id'])) {
     if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
@@ -130,7 +143,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['order_id'])) {
                 <th>Actions</th>
             </tr>
 
-            <?php foreach ($orders as $order): ?>
+            <?php foreach ($paginatedOrders as $order): ?>
             <tr>
                 <td><?= htmlspecialchars($order['id']); ?></td>
                 <td><?= strtoupper(htmlspecialchars($order['from'])); ?></td>
@@ -153,6 +166,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['order_id'])) {
             </tr>
             <?php endforeach; ?>
         </table>
+
+        <!-- Pagination -->
+        <div class="pagination">
+            <?php if ($currentPage > 1): ?>
+                <a href="admin.php?page=1">&laquo; First</a>
+                <a href="admin.php?page=<?= $currentPage - 1; ?>">Previous</a>
+            <?php endif; ?>
+
+            <span>Page <?= $currentPage; ?> of <?= $totalPages; ?></span>
+
+            <?php if ($currentPage < $totalPages): ?>
+                <a href="admin.php?page=<?= $currentPage + 1; ?>">Next</a>
+                <a href="admin.php?page=<?= $totalPages; ?>">Last &raquo;</a>
+            <?php endif; ?>
+        </div>
     </div>
 </body>
 </html>
