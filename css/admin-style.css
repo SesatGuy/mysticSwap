@@ -1,0 +1,91 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1a1a1a;
+    color: white;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+}
+
+.admin-container {
+    width: 90%;
+    max-width: 800px;
+    margin: auto;
+    background: #222;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 255, 127, 0.5);
+}
+
+h1 {
+    font-size: 28px;
+}
+
+.logout {
+    color: red;
+    text-decoration: none;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid white;
+    text-align: center;
+}
+
+th {
+    background: #333;
+}
+
+.status {
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.status.completed {
+    color: green;
+}
+
+.status.canceled {
+    color: red;
+}
+
+button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.complete {
+    background: #00ff7f;
+    color: black;
+}
+
+.complete:hover {
+    background: #00cc66;
+}
+
+.cancel {
+    background: #ff4500;
+    color: white;
+}
+
+.cancel:hover {
+    background: #cc3700;
+}
+
+.delete {
+    background: #ff0000;
+    color: white;
+}
+
+.delete:hover {
+    background: #cc0000;
+}
