@@ -20,6 +20,7 @@ This exchange is very lightweight
 * Reddcoin (RDD)
 * Duinocoin (DUCO)
 * Likecoin (LKE)
+* Magi (XMG)
 
 (It's manual so just add anything)
 
