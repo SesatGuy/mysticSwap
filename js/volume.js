@@ -23,8 +23,9 @@ function fetchAndUpdateTable() {
 function calculateTodayVolume(orders) {
     const coinPrices = {
         DUCO: 0.000011,
-        RDD: 0.000074,
-        LKE: 0.000011 / 3
+        RDD: 0.000073,
+        LKE: 0.000011 / 3,
+        XMG: 0.000011
     };
 
 
@@ -38,7 +39,8 @@ function calculateTodayVolume(orders) {
     let dailyVolume = {
         DUCO: { total: 0, usd: 0 },
         RDD: { total: 0, usd: 0 },
-        LKE: { total: 0, usd: 0 }
+        LKE: { total: 0, usd: 0 },
+        XMG: { total: 0, usd: 0 }
     };
 
 
@@ -77,7 +79,7 @@ function populateTable(dailyVolume) {
     let tbody = document.querySelector("#volumeTable tbody");
     tbody.innerHTML = ""
 
-    const allCoins = ['DUCO', 'RDD', 'LKE'];
+    const allCoins = ['DUCO', 'RDD', 'LKE', 'XMG'];
 
     allCoins.forEach(coin => {
         let row = tbody.insertRow();

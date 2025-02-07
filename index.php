@@ -17,13 +17,15 @@
             <option value="DUCO">DuinoCoin (DUCO)</option>
             <option value="LKE">LikeCoin (LKE)</option>
             <option value="RDD">ReddCoin (RDD)</option>
+            <option value="XMG">Magi (XMG)</option>
         </select>
 
         <label for="to_coin">To:</label>
         <select id="to_coin" onchange="validateCoinSelection()">
             <option value="RDD">ReddCoin (RDD)</option>
             <option value="LKE">LikeCoin (LKE) (No Liquidity)</option>
-            <option value="DUCO">DuinoCoin (DUCO) (No Liquidity)</option>
+            <option value="DUCO">DuinoCoin (DUCO) (Low Liquidity)</option>
+            <option value="XMG">Magi (XMG) (No Liquidity)</option>
         </select>
 
         <label for="amount">Amount:</label>
